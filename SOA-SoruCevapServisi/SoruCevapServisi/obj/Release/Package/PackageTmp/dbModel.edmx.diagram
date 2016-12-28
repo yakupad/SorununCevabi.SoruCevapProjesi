@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="590d00c7cbc243a38172eea7b99b15cc" Name="Diagram1">
+        <EntityTypeShape EntityType="dbsorununcevabiModel.Cevaplar" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbsorununcevabiModel.FavoriCevap" Width="1.5" PointX="7.5" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbsorununcevabiModel.FavoriSoru" Width="1.5" PointX="8.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbsorununcevabiModel.Sorular" Width="1.5" PointX="3" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbsorununcevabiModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbsorununcevabiModel.Uyeler" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <AssociationConnector Association="dbsorununcevabiModel.FK_Cevaplar_Cevaplar" ManuallyRouted="false" />
+        <AssociationConnector Association="dbsorununcevabiModel.FK_Cevaplar_Sorular" ManuallyRouted="false" />
+        <AssociationConnector Association="dbsorununcevabiModel.FK_Cevaplar_Uyeler" ManuallyRouted="false" />
+        <AssociationConnector Association="dbsorununcevabiModel.FK_FavoriCevap_Cevaplar" ManuallyRouted="false" />
+        <AssociationConnector Association="dbsorununcevabiModel.FK_FavoriCevap_Uyeler" ManuallyRouted="false" />
+        <AssociationConnector Association="dbsorununcevabiModel.FK_FavoriSoru_Sorular" ManuallyRouted="false" />
+        <AssociationConnector Association="dbsorununcevabiModel.FK_FavoriSoru_Uyeler" ManuallyRouted="false" />
+        <AssociationConnector Association="dbsorununcevabiModel.FK_Sorular_Uyeler" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

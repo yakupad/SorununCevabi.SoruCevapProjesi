@@ -1,0 +1,547 @@
+﻿@*script>
+       $(function(){
+            var secili = $(".sorufavEkle");
+            if( secili.attr('class')=="fa fa-circle-o text-yellow"){
+
+            secili.attr("class","fa fa-star text-yellow");
+
+        }else{
+                secili.attr("class","fa fa-circle-o text-yellow");
+
+        }});
+    </script>*@
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+
+        <!-- /.col -->
+        @{
+            SorununCevabi.ServiceReference.Soru secilisoru = ViewBag.secilisoru;
+
+        }
+        <div class="col-md-9">
+            <div class="box box-primary" style="margin-top:-15px">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Soru Görüntüle</h3>
+                    <div class="box-tools pull-right">
+                        <a href="#" class="btn btn-box-tool" data-toggle="tooltip" title="Önceki"><i class="fa fa-chevron-left"></i></a>
+                        <a href="#" class="btn btn-box-tool" data-toggle="tooltip" title="Sonraki"><i class="fa fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <div class="mailbox-read-info">
+                        <h3>
+                            @secilisoru.soruBasligi
+                            <span class="pull-right">
+                                @{
+                                    string sinif = "";
+                                    if (secilisoru.favori == false)
+                                    {
+
+                                        sinif = "fa fa-star-o text-yellow";
+                                    }
+                                    else
+                                    {
+                                        sinif = "fa fa-star text-yellow";
+                                    }
+                                }
+                                <button soruId="@secilisoru.soruID" class="@sinif sorufavEkle"></button>
+                            </span>
+                        </h3>
+                        <h5>
+                            @secilisoru.soruSahibi
+                            <span class="mailbox-read-time pull-right">@secilisoru.soruTarihi</span>
+
+                        </h5>
+                    </div>
+                    <!-- /.mailbox-read-info -->
+                    @*<div class="mailbox-controls with-border text-center">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="Delete">
+                                    <i class="fa fa-trash-o"></i>
+                                </button>
+                                <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="Reply">
+                                    <i class="fa fa-reply"></i>
+                                </button>
+                                <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="Forward">
+                                    <i class="fa fa-share"></i>
+                                </button>
+                            </div>
+                             /.btn-group
+                            <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Print">
+                                <i class="fa fa-print"></i>
+                            </button>
+                        </div>*@
+                    <!-- /.mailbox-controls -->
+                    <div class="mailbox-read-message">
+                        @Html.Raw(HttpUtility.UrlDecode(secilisoru.soruIcerigi))
+                    </div>
+                    <!-- /.mailbox-read-message -->
+                </div>
+                <!-- /.box-body -->
+                @*<div class="box-footer">
+                    SORU GÖRÜNTÜLEYİCİ FOOTER İÇERİĞİ
+                             </div>*@
+                <!-- /.box-footer -->
+                <div class="box-footer">
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-info" onclick="FunctionGuncelle(@secilisoru.soruID);" baslik="@secilisoru.soruBasligi" icerik="@secilisoru.soruIcerigi" sahip="@secilisoru.soruSahibiID" id="@secilisoru.soruID">Güncelle</button>
+                    </div>
+                    <button type="button" class="btn btn-danger" onclick="FunctionSil(@secilisoru.soruID);" id="sil">Sil</button>
+                </div>
+                <!-- /.box-footer -->
+            </div>
+            <!-- /. box -->
+            <div id="uyari"></div>
+
+            @*TİMELİNE BAŞLANGIÇ*@
+
+            <!-- The time line -->
+            <ul class="timeline">
+                <li class="time-label">
+                    <span class="bg-red">
+                        <p class="h4">Cevaplar</p>
+
+                    </span>
+                </li>
+                @foreach (SorununCevabi.ServiceReference.Cevap sorununcevabi in ViewBag.secilicevap)
+                {
+                  <!-- timeline time label -->
+
+
+                    <!-- /.timeline-label -->
+                    <!-- timeline item -->
+                    <li>
+                        @{
+                            string siniff = "";
+                            if (sorununcevabi.favori == false)
+                            {
+                                siniff = " fa fa-star-o text-yellow";
+                            }
+
+                            else
+                            {
+                                siniff = "fa fa-star text-yellow";
+                            }
+                            string yararli = "";
+                            if (sorununcevabi.faydalimi == false)
+                            {
+                                yararli = "glyphicon glyphicon-record";
+                            }
+                            else
+                            {
+                                yararli = "glyphicon glyphicon-ok text-green";
+                            }
+
+                        }
+                        <i class="fa">
+
+                            <img class="img-circle img-sm" id="dondur" src="@sorununcevabi.cevapciresmi" alt="@sorununcevabi.cevapSahibi" />
+                            <button cevapId="@sorununcevabi.cevapID" class="@siniff cevapfavEkle"></button>
+                            <button class="@yararli" id="@sorununcevabi.cevapID" onclick="Yararlimi(@sorununcevabi.cevapID);"></button>
+
+                        </i>
+                        <div class="timeline-item">
+                            <span class="text-muted pull-right">
+                                <button type="button" onclick="FunctionSil(@sorununcevabi.cevapID,@sorununcevabi.cevapSahibiID);" class="btn btn-box-tool">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                            </span>
+
+                            &nbsp;<div class="label label-primary">
+                                @sorununcevabi.cevapSahibi
+                            </div>
+                            <span class="time"><i class="fa fa-clock-o"></i> @sorununcevabi.cevapTarihi</span>
+                            <br />
+
+
+
+
+                            <h3 class="timeline-header" yorumid="@sorununcevabi.cevapID" id="baslik"><b> @Html.Raw(HttpUtility.UrlDecode(sorununcevabi.Baslik)) </b></h3>
+
+
+                            <style>
+                                .s {
+                                    word-wrap: break-word;
+                                }
+                            </style>
+                            <div class="timeline-body s">
+                                @Html.Raw(HttpUtility.UrlDecode(sorununcevabi.Icerik))
+
+                            </div>
+                            <span class="text-muted pull-right">
+
+                            </span>
+                            <style>
+                                .yorum {
+                                    border-top: solid;
+                                    border-color: #3c8dbc;
+                                }
+                            </style>
+
+                            <div class="col-md-11">
+                                <!-- Box Comment -->
+                                <div class="box box-widget collapsed-box yorum">
+
+                                    <div class="box-header with-border">
+
+                                        <p class="h5">Yorumlar</p>
+                                        <div class="box-tools">
+                                            <!-- /.user-block -->
+
+
+                                            <button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="Mark as read">
+                                                <i class="fa fa-circle-o"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </div>
+                                        <!-- /.box-tools -->
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <!-- /.box-body -->
+                                    <div class="box-footer box-comments">
+                                        @foreach (var yorum in sorununcevabi.yorumlar)
+                                        {
+                                            <div class="box-comment">
+                                                <!-- User image -->
+                                                <img class="img-circle img-sm" src="@yorum.yorumcuresmi" alt="@yorum.yorumSahibi">
+                                                <div class="comment-text">
+                                                    <span class="username">
+                                                        @yorum.yorumcuadi @yorum.yorumcusoyadi<small>@@@yorum.yorumSahibi</small>
+                                                        <span class="text-muted pull-right">
+                                                            <span onclick="FunctionSil(@yorum.cevapID,@sorununcevabi.cevapSahibiID);" class="btn btn-box-tool"><i class="fa fa-times"></i></span>
+                                                        </span>
+                                                    </span><!-- /.username -->
+                                                    @yorum.Icerik<span class="text-muted pull-right">@yorum.yorumTarihi</span>
+                                                </div>
+                                                <!-- /.comment-text -->
+                                            </div>
+
+                                        }
+
+
+                                    </div>
+                                    <!-- /.box-footer -->
+                                    <div class="box-footer">
+
+                                        <img class="img-responsive img-circle img-sm" src="@Session["kullaniciresmi"]" alt="@Session["kullaniciadi"]">
+                                        <!-- .img-push is used to add margin to elements next to floating images -->
+                                        <div class="img-push">
+                                            <script>
+
+                                            </script>
+                                            <input type="text" onkeypress="myFunction(@sorununcevabi.cevapID);" class="form-control input-sm @sorununcevabi.cevapID" placeholder="Enter tuşuna basarak yorumunuzu gönderin" />
+
+                                        </div>
+
+                                    </div>
+                                    <!-- /.box-footer -->
+                                </div>
+                                <!-- /.box -->
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        </div>
+                    </li>
+                            }
+                <!-- END timeline item -->
+
+                <li>
+                    <i class="fa fa-clock-o bg-gray"></i>
+                </li>
+            </ul>
+            @*TİMELİNE BİTİŞ*@
+            <br />
+
+
+
+
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Soruyu Cevapla</h3>
+                </div>
+                <!-- /.box-header -->
+
+                <div class="box-body">
+                    <div class="form-group">
+                        <input class="form-control" name="cevapbasligi" id="cevapbasligi" placeholder="Cevap Başlığı">
+
+                    </div>
+                    <div class="form-group">
+                        <textarea id="compose-textarea" class="form-control" placeholder="Cevabınızı Buraya Giriniz..." style="height: 100px"></textarea>
+                    </div>
+                    @*</div>
+                         /.box-body
+                        <div class="box-footer">*@
+                    <div class="pull-right">
+                        <button type="button" id="cevapekle" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Cevapla</button>
+                    </div>
+                    @*<button type="reset" id="sifirla" class="btn btn-default"><i class="fa fa-times"></i> Temizle</button>*@
+                </div>
+
+                <!-- /.box-footer -->
+            </div>
+            <!-- /. box -->
+
+
+
+
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->
+<script src="~/Scripts/jquery-2.2.3.min.js"></script>
+
+
+<script>
+    $(function(){
+        $(".cevapfavEkle").click(function(){
+            var secili = $(this);
+            var cevapId = $(this).attr("cevapId");
+            $.post("../CevapFavGuncelle",{cevapID:cevapId},function(data){
+                console.log(data);
+                if(data.basari == true){
+                    secili.removeClass("fa-star-o text-yellow");
+                    secili.addClass("fa-star text-yellow");
+
+                }else{
+                    secili.removeClass("fa-star text-yellow");
+                    secili.addClass("fa-star-o text-yellow");
+                }
+            });
+        });
+
+    });
+</script>
+
+<script>
+    $(function(){
+        $(".sorufavEkle").click(function(){
+            var secili = $(this);
+            secili.hide();
+            var soruId = @secilisoru.soruID;
+            $.post("../SoruFavGuncelle",{soruID:soruId},function(data){
+secili.show();
+                console.log(data);
+                if(data.basari == true){
+                    secili.removeClass("fa-star-o text-yellow");
+                    secili.addClass("fa-star text-yellow");
+
+                }else{
+                    secili.removeClass("fa-star text-yellow");
+                    secili.addClass("fa-star-o text-yellow");
+                }
+            });
+        });
+
+    });
+</script>
+
+<script>
+
+    function myFunction(x){
+        var keycode=(event.keyCode ? event.keyCode : event.which);
+        if(keycode=='13'){
+
+            var yorumbasligi="@secilisoru.soruSahibi";
+            var yorumicerigi=$("."+x).val();
+            var yorumsahibi=@Session["id"]; //buraya da session'dan id gelmiyor. buraya da bak session da bır sorun olabılır okan OKAN
+            var yorumid=x;
+            var soruno=@secilisoru.soruID;
+            console.log(soruno);
+            $.post("../CevapEkle", {cevapbasligi:yorumbasligi,cevapicerigi:yorumicerigi,cevapsahibi:yorumsahibi,soruno:soruno,yorumid:yorumid }, function (data) {
+                if (data.basari == true) {
+                    location.href = "../SoruOku/@secilisoru.soruID";
+                }
+                else {
+                    alert("Bir hata oluştu");
+                }
+            });
+        }
+    }
+</script>
+
+
+<script>
+    $(function () {
+        $("#cevapekle").click(function(){
+                console.log("click sonrası");
+                var cevapbasligi=$("#cevapbasligi").val();
+                var cevapicerigi = $("#compose-textarea").val();
+                var soruno=@secilisoru.soruID;
+            console.log(soruno);
+            var yorumID=0;
+
+                $.post("../CevapEkle", {cevapbasligi:escape(cevapbasligi),cevapicerigi:escape(cevapicerigi),cevapsahibi:@ViewBag.kullaniciid,soruno:soruno,yorumID:yorumID }, function (data) {
+                    //su kısımdakı cevapsahibi karısındakını almıyor. burdab ır hata var bak... OKAN
+                    if (data.basari == true) {
+                        location.href = "../SoruOku/@secilisoru.soruID";
+                    }
+                    else {
+                        alert("Bir hata oluştu");
+                    }
+                });
+
+
+        });
+    });
+</script>
+
+
+
+<script>
+
+    function FunctionSil(x,y){
+
+            var cevapID = x;
+            var cevapsahibi = y;
+            var oturumsahibi=@Session["id"];
+            console.log(cevapsahibi);
+            console.log(oturumsahibi);
+            if(cevapsahibi==oturumsahibi) {
+                $.post("../CevapSil", {cevapID:cevapID }, function (data) {
+                    if (data.basari == true) {
+                        $('html,body').scrollTop(0);
+                        setTimeout("location.reload();", 2500);
+                        $("#uyari").html('<div class="alert alert-success alert-dismissible" id="kosul"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-danger"></i> Başarılı!</h4>Seçilen soruyu başarıyla sildiniz</div>');
+
+
+                    }
+                    else {
+                        alert("Bir hata oluştu");
+                    }
+                });
+            }
+            else{
+                $('html,body').scrollTop(0);
+                $("#uyari").html('<div class="alert alert-danger alert-dismissible" id="kosul"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-danger"></i> Hata!</h4>Yorum/Cevap sahibi kullanıcılar yalnızca silme işleminde bulunabilirler!</div>');
+
+            }
+        }
+
+
+
+</script>
+
+
+<script type="text/javascript">
+var $jQuery = jQuery.noConflict(true);
+jQuery = $jQuery; // forces the new jQuery into global
+jQuery(function($) {
+    $.getScript('../../Scripts/bootstrap3-wysihtml5.all.min.js', function() {
+      $("#compose-textarea").wysihtml5();
+  });
+});
+</script>
+
+<script>
+
+    function FunctionSil(x){
+        var soruID = x;
+        var sorusahibi = @secilisoru.soruSahibiID;
+        var oturumsahibi=@Session["id"];
+        if(sorusahibi==oturumsahibi) {
+            $.post("../SoruSil", {soruID:soruID }, function (data) {
+                if (data.basari == true) {
+                    $("#uyari").html('<div class="alert alert-success alert-dismissible" id="kosul"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-danger"></i> Başarılı!</h4>Seçilen soruyu başarıyla sildiniz</div>');
+                    setTimeout("location.href = '../Sorular';", 2500);
+
+                }
+                else {
+                    alert("Bir hata oluştu");
+                }
+            });
+        }
+        else{
+            $('html,body').scrollTop(0);
+            $("#uyari").html('<div class="alert alert-danger alert-dismissible" id="kosul"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-danger"></i> Hata!</h4>Soruyu soran kişiler yalnızca silme işleminde bulunabilirler!</div>');
+
+        }
+    }
+
+</script>
+<script>
+
+    function FunctionGuncelle(x) {
+        var sorusahibi = @secilisoru.soruSahibiID;
+        var soruID = x;
+        var sorubaslik = $("#" + x).attr("baslik");
+        var soruicerik = $("#" + x).attr("icerik");
+        var oturumsahibi=@Session["id"];
+        if(sorusahibi==oturumsahibi) {
+
+
+
+
+        $.post("../SoruGuncelleme", {soruID:soruID,sorubaslik:sorubaslik,soruicerik:soruicerik }, function (data) {
+            if (data.basari == true) {
+                location.href = "../SoruGuncelle";
+        }
+        else {
+                alert("Bir hata oluştu");
+        }
+        });
+        }
+        else {
+            $('html,body').scrollTop(0);
+            $("#uyari").html('<div class="alert alert-danger alert-dismissible" id="kosul"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-danger"></i> Hata!</h4>Soruyu soran kişiler yalnızca güncelleme işleminde bulunabilirler!</div>');
+
+        }
+    }
+
+</script>
+
+<script>
+
+        function Yararlimi(x){
+            var cevapId = x
+            var sorusahibi=@secilisoru.soruSahibiID;
+            var suankikullanici=@Session["id"];
+            if(sorusahibi==suankikullanici){
+            $.post("../YararliCevap",{cevapID:cevapId},function(data){
+                console.log(data);
+                if(data.basari == false){
+                    $("#".x).removeClass("glyphicon glyphicon-record");
+                    $("#"+x).addClass("glyphicon glyphicon-ok text-green");
+            }
+            else{
+                    $("#"+x).removeClass("glyphicon glyphicon-ok text-green");
+                    $("#"+x).addClass("glyphicon glyphicon-record");
+            }
+            });
+            }
+            else{
+            $('html,body').scrollTop(0);
+            $("#uyari").html('<div class="alert alert-danger alert-dismissible" id="kosul"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-danger"></i> Hata!</h4>Soruyu soran kişiler yalnızca cevap onaylama işleminde bulunabilirler!</div>');
+            }
+       }
+
+</script>
+
+
+

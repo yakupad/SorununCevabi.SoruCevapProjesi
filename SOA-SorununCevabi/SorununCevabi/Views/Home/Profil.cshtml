@@ -1,0 +1,350 @@
+﻿
+@{
+    ViewBag.Title = "Profil";
+}
+<!-- Content Wrapper. Contains page content -->
+@{
+    SorununCevabi.ServiceReference.Uye uyebilgisi = ViewBag.uyeBilgileri;
+}
+<link rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.css" />
+<script src="//cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.min.js"></script>
+
+<style type="text/css">
+    .bootstrap-tagsinput {
+        width: 100%;
+    }
+
+    .label {
+        line-height: 2 !important;
+    }
+</style>
+
+
+
+
+
+
+<script>
+$(document).ready(function () {
+    $('#bootstrapTagsInputForm')
+        .find('[name="cities"]')
+            // Revalidate the cities field when it is changed
+            .change(function (e) {
+                $('#bootstrapTagsInputForm').formValidation('revalidateField', 'cities');
+            })
+            .end()
+        .find('[name="countries"]')
+            // Revalidate the countries field when it is changed
+            .change(function (e) {
+                $('#bootstrapTagsInputForm').formValidation('revalidateField', 'countries');
+            })
+            .end()
+        .formValidation({
+            framework: 'bootstrap',
+            excluded: ':disabled',
+            icon: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                cities: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Please enter at least one city you like the most.'
+                        }
+                    }
+                },
+                countries: {
+                    validators: {
+                        callback: {
+                            message: 'Please enter 2-4 countries you like most.',
+                            callback: function (value, validator, $field) {
+                                // Get the entered elements
+                                var options = validator.getFieldElements('countries').tagsinput('items');
+                                return (options !== null && options.length >= 2 && options.length <= 4);
+                            }
+                        }
+                    }
+                }
+            }
+        });
+});
+</script>
+
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+
+        <div class="col-md-9">
+            <div class="nav-tabs-custom" style="margin-top:-15px">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#activity" data-toggle="tab">Profil</a></li>
+                    <li><a href="#settings" data-toggle="tab">Ayarlar</a></li>
+                    <li><a href="#timeline" data-toggle="tab">Diğer Üyeler</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="active tab-pane" id="activity">
+
+                        <!-- Profile Image -->
+                        <div class="box box-widget widget-user">
+                            <!-- Add the bg color to the header using any of the bg-* classes -->
+                           
+                            <div style="background-color:rgba(0, 0, 0, 0.5);">
+                                <div class="widget-user-header bg-black" style="background-image: url('../Images/profile-cover.jpg'); background-size:contain;">
+
+                                    <h3 style="color:red;" class="widget-user-username"><b>@uyebilgisi.adi @uyebilgisi.soyadi @@@uyebilgisi.kuladi</b></h3>
+                                    <h5 style="color:deepskyblue" class="widget-user-desc"><b>@uyebilgisi.meslek</b></h5>
+                                </div>
+                            </div>
+                            <div class="widget-user-image">
+                                <img id="dondur" class="img-circle" src="@uyebilgisi.kullaniciresmi" alt="User Avatar">
+                            </div>
+
+                            <div class="box-footer">
+                                <div class="row">
+                                    <div class="col-sm-3 border-right">
+                                        <div class="description-block">
+                                            <h5 class="description-header">@ViewBag.kulsorus</h5>
+                                            <span class="description-text">Soruları</span>
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-sm-3 border-right">
+                                        <div class="description-block">
+                                            <h5 class="description-header">@ViewBag.kulcevaps</h5>
+                                            <span class="description-text">Cevapları</span>
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-sm-3 border-right">
+                                        <div class="description-block">
+                                            <h5 class="description-header">@ViewBag.kulfavorisorus</h5>
+                                            <span class="description-text">Favori Soruları</span>
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="description-block">
+                                            <h5 class="description-header">@ViewBag.kulfavoricevaps</h5>
+                                            <span class="description-text">Favori Cevapları</span>
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                                <!-- /.row -->
+                            </div>
+
+                            <!-- /.box -->
+                            <!-- About Me Box -->
+                            <div class="box box-primary">
+                                <div class="box-header ">
+                                    <h3 class="box-title">Hakkımda</h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <strong><i class="fa fa-book margin-r-5"></i>Eğitim</strong>
+                                    <p class="text-muted">
+                                        @uyebilgisi.egitim
+                                    </p>
+                                    <hr>
+                                    <strong><i class="fa fa-map-marker margin-r-5"></i> Konum</strong>
+                                    <p class="text-muted">@uyebilgisi.konum</p>
+                                    <hr>
+                                    <strong><i class="fa fa-pencil margin-r-5"></i> Yetenekleri</strong>
+                                    <p>
+                                        @{
+                                            string yetenekcumlesi;
+                                            if (uyebilgisi.yetenek == null) { yetenekcumlesi = ""; }
+                                            else
+                                            {
+                                                yetenekcumlesi = uyebilgisi.yetenek;
+                                                char[] ayrac = { ',' };
+                                                string[] yetiler = yetenekcumlesi.Split(ayrac);
+
+                                                string[] renk = new string[] { "danger", "success", "info", "warning", "primary" };
+                                                Random r = new Random();
+                                                foreach (var item in yetiler)
+                                                {
+                                                    <span class="label label-@renk[r.Next(0, 4)]">@item</span>
+                                                }
+                                            }
+                                        }
+
+
+                                    </p>
+                                    <hr>
+                                    <strong><i class="fa fa-file-text-o margin-r-5"></i> Notu</strong>
+                                    <p>@uyebilgisi.not</p>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                            <!-- /.box -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="timeline">
+                        <!-- The timeline -->
+
+                        <div class="box-body no-padding">
+                            <ul class="users-list clearfix">
+                                @foreach (SorununCevabi.ServiceReference.Uye uye in ViewBag.tumuyeler)
+                                {
+
+                                    <li>
+                                        <img src="@uye.kullaniciresmi" class="img-circle" height="75px" width="75px" alt="@uye.kuladi">
+                                        <a class="users-list-name" href="#">@uye.adi @uye.soyadi</a>
+                                        <span class="users-list-date">@uye.kayittarihi</span>
+                                    </li>
+
+                                }
+                            </ul>
+                            <!-- /.users-list -->
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- /.box-body -->
+                        <div class="box-footer text-center">
+
+                        </div>
+                        <!-- /.box-footer -->
+
+
+
+
+                    </div>
+
+
+
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="settings">
+                        <form id="inputform" class="form-horizontal">
+                            <fieldset>
+                                <div class="form-group">
+                                    <label for="inputName" class="col-sm-2 control-label">Ad</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="ad" id="inputName" placeholder="Ad">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputName" class="col-sm-2 control-label">Soyad</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="soyad" id="inputName" placeholder="Soyad">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputName" class="col-sm-2 control-label">Kullanıcı Adı</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="kullaniciadi" id="inputName" placeholder="Kullanıcı Adı">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" name="eposta" id="inputEmail" placeholder="E Posta">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputName" class="col-sm-2 control-label">Şifre</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="sifre" id="inputName" placeholder="Şifre">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputName" class="col-sm-2 control-label">Meslek</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="meslek" id="inputName" placeholder="Meslek">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputName" class="col-sm-2 control-label">Eğitim</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="egitim" id="inputName" placeholder="Eğitim">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputName" class="col-sm-2 control-label">Konum</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="konum" id="inputName" placeholder="Konum">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Yetenekler</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="yetenekler" id="tag" class="form-control" value="" placeholder="Yetenekler" data-role="tagsinput" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Kullanıcı Resmi</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" class="form-control" name="kullaniciresmi" id="kullaniciresmi" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputExperience" class="col-sm-2 control-label">Not</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" id="inputExperience" name="not" placeholder="Not"></textarea>
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="submit" id="kullaniciguncelle" class="btn btn-danger">Profil Guncelle</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+            </div>
+            <!-- /.nav-tabs-custom -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->
+
+<script>
+    var degg = $("#tag").tagsinput('items');
+</script>
+
+<script>
+        $("#kullaniciguncelle").bind('click', function (){
+
+
+                var data = new FormData(document.getElementById('inputform'));
+                console.log(data);
+                $.ajax({
+                    xhr: function () {
+                        return $.ajaxSettings.xhr();
+                    },
+                    type: "POST",
+                    data: data,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    url: "@Url.Action("ProfilGuncelle", "Home")",
+                    success: function () {
+                        $('html,body').scrollTop(0);
+                        $("#uyari").html('<div class="alert alert-success alert-dismissible" id="basarili"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-check"></i> İşlem Başarılı </h4>Yeni üye kaydınız başarılı ile gerçekleşti. Giriş ekranına yönlendiriliyorsunuz.</div>').hide(7000);
+                        
+                    },
+
+                    error: function () {
+                        $('html,body').scrollTop(0);
+                        $("#uyari").html('<div class="alert alert-danger alert-dismissible" id="basarisiz"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> <h4><i class="icon fa fa-ban"></i> İşlem Başarısız</h4> Yeni üye kaydı yapılırken bir problem oluştu. Lütfen gerekli kontrolleri yaparak yeniden üye olmayı deneyiniz.</div>').hide(7000)
+                    },
+                });
+        });
+</script>

@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SorununCevabi" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://sorununcevabi.somee.com/SorununCevabi.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://sorununcevabi.somee.com/SorununCevabi.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://sorununcevabi.somee.com/SorununCevabi.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SoruCevapServisi" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ISorununCevabi_giris_InputMessage">
+    <wsdl:part name="parameters" element="tns:giris" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_giris_OutputMessage">
+    <wsdl:part name="parameters" element="tns:girisResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_kayit_InputMessage">
+    <wsdl:part name="parameters" element="tns:kayit" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_kayit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:kayitResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_soruekle_InputMessage">
+    <wsdl:part name="parameters" element="tns:soruekle" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_soruekle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:soruekleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_cevapekle_InputMessage">
+    <wsdl:part name="parameters" element="tns:cevapekle" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_cevapekle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:cevapekleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_cevapfavekle_InputMessage">
+    <wsdl:part name="parameters" element="tns:cevapfavekle" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_cevapfavekle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:cevapfavekleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_cevapcek_InputMessage">
+    <wsdl:part name="parameters" element="tns:cevapcek" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_cevapcek_OutputMessage">
+    <wsdl:part name="parameters" element="tns:cevapcekResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_teksorucek_InputMessage">
+    <wsdl:part name="parameters" element="tns:teksorucek" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_teksorucek_OutputMessage">
+    <wsdl:part name="parameters" element="tns:teksorucekResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_tumsorularıcek_InputMessage">
+    <wsdl:part name="parameters" element="tns:tumsorularıcek" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_tumsorularıcek_OutputMessage">
+    <wsdl:part name="parameters" element="tns:tumsorularıcekResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_uyebilgileri_InputMessage">
+    <wsdl:part name="parameters" element="tns:uyebilgileri" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_uyebilgileri_OutputMessage">
+    <wsdl:part name="parameters" element="tns:uyebilgileriResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_sorusil_InputMessage">
+    <wsdl:part name="parameters" element="tns:sorusil" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_sorusil_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sorusilResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_soruguncelle_InputMessage">
+    <wsdl:part name="parameters" element="tns:soruguncelle" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_soruguncelle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:soruguncelleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_cevapsil_InputMessage">
+    <wsdl:part name="parameters" element="tns:cevapsil" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_cevapsil_OutputMessage">
+    <wsdl:part name="parameters" element="tns:cevapsilResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_sorufavguncelle_InputMessage">
+    <wsdl:part name="parameters" element="tns:sorufavguncelle" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_sorufavguncelle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sorufavguncelleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_cevapfavguncelle_InputMessage">
+    <wsdl:part name="parameters" element="tns:cevapfavguncelle" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_cevapfavguncelle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:cevapfavguncelleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_yararlicevap_InputMessage">
+    <wsdl:part name="parameters" element="tns:yararlicevap" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_yararlicevap_OutputMessage">
+    <wsdl:part name="parameters" element="tns:yararlicevapResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_tumfavorisorularıcek_InputMessage">
+    <wsdl:part name="parameters" element="tns:tumfavorisorularıcek" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_tumfavorisorularıcek_OutputMessage">
+    <wsdl:part name="parameters" element="tns:tumfavorisorularıcekResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_tumfavoricevaplaricek_InputMessage">
+    <wsdl:part name="parameters" element="tns:tumfavoricevaplaricek" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_tumfavoricevaplaricek_OutputMessage">
+    <wsdl:part name="parameters" element="tns:tumfavoricevaplaricekResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_kulSoruSayisi_InputMessage">
+    <wsdl:part name="parameters" element="tns:kulSoruSayisi" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_kulSoruSayisi_OutputMessage">
+    <wsdl:part name="parameters" element="tns:kulSoruSayisiResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_kulCevapSayisi_InputMessage">
+    <wsdl:part name="parameters" element="tns:kulCevapSayisi" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_kulCevapSayisi_OutputMessage">
+    <wsdl:part name="parameters" element="tns:kulCevapSayisiResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_kulFavSoruSayisi_InputMessage">
+    <wsdl:part name="parameters" element="tns:kulFavSoruSayisi" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_kulFavSoruSayisi_OutputMessage">
+    <wsdl:part name="parameters" element="tns:kulFavSoruSayisiResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_kulFavCevapSayisi_InputMessage">
+    <wsdl:part name="parameters" element="tns:kulFavCevapSayisi" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_kulFavCevapSayisi_OutputMessage">
+    <wsdl:part name="parameters" element="tns:kulFavCevapSayisiResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_profilGuncelle_InputMessage">
+    <wsdl:part name="parameters" element="tns:profilGuncelle" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_profilGuncelle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:profilGuncelleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_tumuyelericek_InputMessage">
+    <wsdl:part name="parameters" element="tns:tumuyelericek" />
+  </wsdl:message>
+  <wsdl:message name="ISorununCevabi_tumuyelericek_OutputMessage">
+    <wsdl:part name="parameters" element="tns:tumuyelericekResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ISorununCevabi">
+    <wsdl:operation name="giris">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISorununCevabi/giris" message="tns:ISorununCevabi_giris_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISorununCevabi/girisResponse" message="tns:ISorununCevabi_giris_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="kayit">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISorununCevabi/kayit" message="tns:ISorununCevabi_kayit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISorununCevabi/kayitResponse" message="tns:ISorununCevabi_kayit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="soruekle">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISorununCevabi/soruekle" message="tns:ISorununCevabi_soruekle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISorununCevabi/soruekleResponse" message="tns:ISorununCevabi_soruekle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="cevapekle">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISorununCevabi/cevapekle" message="tns:ISorununCevabi_cevapekle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISorununCevabi/cevapekleResponse" message="tns:ISorununCevabi_cevapekle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="cevapfavekle">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISorununCevabi/cevapfavekle" message="tns:ISorununCevabi_cevapfavekle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISorununCevabi/cevapfavekleResponse" message="tns:ISorununCevabi_cevapfavekle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="cevapcek">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISorununCevabi/cevapcek" message="tns:ISorununCevabi_cevapcek_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISorununCevabi/cevapcekResponse" message="tns:ISorununCevabi_cevapcek_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="teksorucek">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISorununCevabi/teksorucek" message="tns:ISorununCevabi_teksorucek_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISorununCevabi/teksorucekResponse" message="tns:ISorununCevabi_teksorucek_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="tumsorularıcek">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISorununCevabi/tumsorularıcek" message="tns:ISorununCevabi_tumsorularıcek_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISorununCevabi/tumsorularıcekResponse" message="tns:ISorununCevabi_tumsorularıcek_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="uyebilgileri">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISorununCevabi/uyebilgileri" message="tns:ISorununCevabi_uyebilgileri_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISorununCevabi/uyebilgileriResponse" message="tns:ISorununCevabi_uyebilgileri_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sorusil">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISorununCevabi/sorusil" message="tns:ISorununCevabi_sorusil_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISorununCevabi/sorusilResponse" message="tns:ISorununCevabi_sorusil_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="soruguncelle">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISorununCevabi/soruguncelle" message="tns:ISorununCevabi_soruguncelle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISorununCevabi/soruguncelleResponse" message="tns:ISorununCevabi_soruguncelle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="cevapsil">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISorununCevabi/cevapsil" message="tns:ISorununCevabi_cevapsil_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISorununCevabi/cevapsilResponse" message="tns:ISorununCevabi_cevapsil_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sorufavguncelle">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISorununCevabi/sorufavguncelle" message="tns:ISorununCevabi_sorufavguncelle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISorununCevabi/sorufavguncelleResponse" message="tns:ISorununCevabi_sorufavguncelle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="cevapfavguncelle">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISorununCevabi/cevapfavguncelle" message="tns:ISorununCevabi_cevapfavguncelle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISorununCevabi/cevapfavguncelleResponse" message="tns:ISorununCevabi_cevapfavguncelle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="yararlicevap">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISorununCevabi/yararlicevap" message="tns:ISorununCevabi_yararlicevap_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISorununCevabi/yararlicevapResponse" message="tns:ISorununCevabi_yararlicevap_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="tumfavorisorularıcek">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISorununCevabi/tumfavorisorularıcek" message="tns:ISorununCevabi_tumfavorisorularıcek_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISorununCevabi/tumfavorisorularıcekResponse" message="tns:ISorununCevabi_tumfavorisorularıcek_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="tumfavoricevaplaricek">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISorununCevabi/tumfavoricevaplaricek" message="tns:ISorununCevabi_tumfavoricevaplaricek_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISorununCevabi/tumfavoricevaplaricekResponse" message="tns:ISorununCevabi_tumfavoricevaplaricek_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="kulSoruSayisi">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISorununCevabi/kulSoruSayisi" message="tns:ISorununCevabi_kulSoruSayisi_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISorununCevabi/kulSoruSayisiResponse" message="tns:ISorununCevabi_kulSoruSayisi_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="kulCevapSayisi">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISorununCevabi/kulCevapSayisi" message="tns:ISorununCevabi_kulCevapSayisi_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISorununCevabi/kulCevapSayisiResponse" message="tns:ISorununCevabi_kulCevapSayisi_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="kulFavSoruSayisi">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISorununCevabi/kulFavSoruSayisi" message="tns:ISorununCevabi_kulFavSoruSayisi_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISorununCevabi/kulFavSoruSayisiResponse" message="tns:ISorununCevabi_kulFavSoruSayisi_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="kulFavCevapSayisi">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISorununCevabi/kulFavCevapSayisi" message="tns:ISorununCevabi_kulFavCevapSayisi_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISorununCevabi/kulFavCevapSayisiResponse" message="tns:ISorununCevabi_kulFavCevapSayisi_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="profilGuncelle">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISorununCevabi/profilGuncelle" message="tns:ISorununCevabi_profilGuncelle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISorununCevabi/profilGuncelleResponse" message="tns:ISorununCevabi_profilGuncelle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="tumuyelericek">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISorununCevabi/tumuyelericek" message="tns:ISorununCevabi_tumuyelericek_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISorununCevabi/tumuyelericekResponse" message="tns:ISorununCevabi_tumuyelericek_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ISorununCevabi" type="tns:ISorununCevabi">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="giris">
+      <soap:operation soapAction="http://tempuri.org/ISorununCevabi/giris" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kayit">
+      <soap:operation soapAction="http://tempuri.org/ISorununCevabi/kayit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="soruekle">
+      <soap:operation soapAction="http://tempuri.org/ISorununCevabi/soruekle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cevapekle">
+      <soap:operation soapAction="http://tempuri.org/ISorununCevabi/cevapekle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cevapfavekle">
+      <soap:operation soapAction="http://tempuri.org/ISorununCevabi/cevapfavekle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cevapcek">
+      <soap:operation soapAction="http://tempuri.org/ISorununCevabi/cevapcek" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="teksorucek">
+      <soap:operation soapAction="http://tempuri.org/ISorununCevabi/teksorucek" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="tumsorularıcek">
+      <soap:operation soapAction="http://tempuri.org/ISorununCevabi/tumsorularıcek" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="uyebilgileri">
+      <soap:operation soapAction="http://tempuri.org/ISorununCevabi/uyebilgileri" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sorusil">
+      <soap:operation soapAction="http://tempuri.org/ISorununCevabi/sorusil" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="soruguncelle">
+      <soap:operation soapAction="http://tempuri.org/ISorununCevabi/soruguncelle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cevapsil">
+      <soap:operation soapAction="http://tempuri.org/ISorununCevabi/cevapsil" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sorufavguncelle">
+      <soap:operation soapAction="http://tempuri.org/ISorununCevabi/sorufavguncelle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cevapfavguncelle">
+      <soap:operation soapAction="http://tempuri.org/ISorununCevabi/cevapfavguncelle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="yararlicevap">
+      <soap:operation soapAction="http://tempuri.org/ISorununCevabi/yararlicevap" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="tumfavorisorularıcek">
+      <soap:operation soapAction="http://tempuri.org/ISorununCevabi/tumfavorisorularıcek" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="tumfavoricevaplaricek">
+      <soap:operation soapAction="http://tempuri.org/ISorununCevabi/tumfavoricevaplaricek" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kulSoruSayisi">
+      <soap:operation soapAction="http://tempuri.org/ISorununCevabi/kulSoruSayisi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kulCevapSayisi">
+      <soap:operation soapAction="http://tempuri.org/ISorununCevabi/kulCevapSayisi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kulFavSoruSayisi">
+      <soap:operation soapAction="http://tempuri.org/ISorununCevabi/kulFavSoruSayisi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kulFavCevapSayisi">
+      <soap:operation soapAction="http://tempuri.org/ISorununCevabi/kulFavCevapSayisi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="profilGuncelle">
+      <soap:operation soapAction="http://tempuri.org/ISorununCevabi/profilGuncelle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="tumuyelericek">
+      <soap:operation soapAction="http://tempuri.org/ISorununCevabi/tumuyelericek" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SorununCevabi">
+    <wsdl:port name="BasicHttpBinding_ISorununCevabi" binding="tns:BasicHttpBinding_ISorununCevabi">
+      <soap:address location="http://sorununcevabi.somee.com/SorununCevabi.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

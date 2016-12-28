@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="sorununcevabiservisi" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^D:\\SoruCevapServisi\\SoruCevapServisi\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^D:\\SoruCevapServisi\\SoruCevapServisi\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="dbSorununCevabiEntities-Web.config Connection String" description="" value="metadata=res://*/SorununCevabi.csdl|res://*/SorununCevabi.ssdl|res://*/SorununCevabi.msl;provider=System.Data.SqlClient;provider connection string=&quot;Data Source=sorununcevabi.database.windows.net;Initial Catalog=dbSorununCevabi;User ID=yakupad;Password=2745Yakup.&quot;" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\SoruCevapServisi\\SoruCevapServisi\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='dbSorununCevabiEntities']/@connectionString" />
+  </parameter>
+  <parameter name="SoruCevapEntities-Web.config Connection String" description="SoruCevapEntities Connection String used in web.config by the application to access the database." value="metadata=res://*/Model.SoruCevap.csdl|res://*/Model.SoruCevap.ssdl|res://*/Model.SoruCevap.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=.;initial catalog=SorununCevabi;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\SoruCevapServisi\\SoruCevapServisi\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='SoruCevapEntities']/@connectionString" />
+  </parameter>
+  <parameter name="SorununCevabiEntities-Web.config Connection String" description="SorununCevabiEntities Connection String used in web.config by the application to access the database." value="metadata=res://*/SoruCevap.csdl|res://*/SoruCevap.ssdl|res://*/SoruCevap.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=.;initial catalog=SorununCevabi;integrated security=True;multipleactiveresultsets=True;application name=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\SoruCevapServisi\\SoruCevapServisi\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='SorununCevabiEntities']/@connectionString" />
+  </parameter>
+</parameters>

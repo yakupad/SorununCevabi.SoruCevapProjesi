@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "FavoriSorular";
+}
+
+
+<link href="~/Content/favoriler.css" rel="stylesheet" />
+<div class="container" style="padding-top:30px">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="box box-primary" style="margin-top:-30px">
+
+                <div class="box-header"><h3 class="box-title">Favori Sorular</h3></div>
+                @foreach (SorununCevabi.ServiceReference.Soru tfs in ViewBag.tumfavorisorular)
+                {
+
+                    <div id="tb-testimonial" class="testimonial testimonial-warning-filled" style="margin-left:20px; margin-right:20px; margin-top:10px;">
+                        <div class="testimonial-section">
+                            @Html.Raw(HttpUtility.UrlDecode(tfs.soruIcerigi))
+                        </div>
+                        <div class="testimonial-desc">
+                            <img src="@tfs.soruSahibiResim" id="dondur" alt="@tfs.soruSahibi" />
+                            <div class="testimonial-writer">
+                                <div class="testimonial-writer-name">@tfs.soruBasligi</div>
+                                <div class="testimonial-writer-designation">@tfs.soruSahibi</div>
+                                <a href="#" class="testimonial-writer-company">@tfs.soruTarihi</a>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+                <br />
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+

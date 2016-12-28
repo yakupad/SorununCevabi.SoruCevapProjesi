@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://sorununcevabi.somee.com/SorununCevabi.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SoruCevapServisi" />
+  <xs:element name="giris">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kullaniciadi" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sifre" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="girisResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="girisResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="kayit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kullaniciadi" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ad" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="soyad" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sifre" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="eposta" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="kullaniciresmi" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="meslek" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="kayitResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kayitResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="soruekle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="soruBasligi" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="soruIcerigi" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="soruSahibi" type="xs:int" />
+        <xs:element minOccurs="0" name="soruTarihi" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="favori" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="soruekleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="soruekleResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cevapekle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cevapBasligi" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cevapİcerigi" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cevapSahibi" type="xs:int" />
+        <xs:element minOccurs="0" name="soruNo" type="xs:int" />
+        <xs:element minOccurs="0" name="yorumID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cevapekleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cevapekleResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cevapfavekle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="uyeID" type="xs:int" />
+        <xs:element minOccurs="0" name="cevapID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cevapfavekleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cevapfavekleResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cevapcek">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="soruID" type="xs:int" />
+        <xs:element minOccurs="0" name="uyeID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cevapcekResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/SoruCevapServisi" minOccurs="0" name="cevapcekResult" nillable="true" type="q1:ArrayOfCevap" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="teksorucek">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="soruID" type="xs:int" />
+        <xs:element minOccurs="0" name="uyeId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="teksorucekResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/SoruCevapServisi" minOccurs="0" name="teksorucekResult" nillable="true" type="q2:Soru" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tumsorularıcek">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="uyeID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tumsorularıcekResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/SoruCevapServisi" minOccurs="0" name="tumsorularıcekResult" nillable="true" type="q3:ArrayOfSoru" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="uyebilgileri">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="uyeID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="uyebilgileriResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/SoruCevapServisi" minOccurs="0" name="uyebilgileriResult" nillable="true" type="q4:Uye" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sorusil">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="soruid" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sorusilResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sorusilResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="soruguncelle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="soruid" type="xs:int" />
+        <xs:element minOccurs="0" name="sorubaslik" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="soruicerik" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="soruguncelleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="soruguncelleResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cevapsil">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cevapid" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cevapsilResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cevapsilResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sorufavguncelle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="uyeID" type="xs:int" />
+        <xs:element minOccurs="0" name="soruID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sorufavguncelleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sorufavguncelleResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cevapfavguncelle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="uyeID" type="xs:int" />
+        <xs:element minOccurs="0" name="soruID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cevapfavguncelleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cevapfavguncelleResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="yararlicevap">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cevapID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="yararlicevapResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="yararlicevapResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tumfavorisorularıcek">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="uyeID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tumfavorisorularıcekResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/SoruCevapServisi" minOccurs="0" name="tumfavorisorularıcekResult" nillable="true" type="q5:ArrayOfSoru" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tumfavoricevaplaricek">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="uyeID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tumfavoricevaplaricekResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/SoruCevapServisi" minOccurs="0" name="tumfavoricevaplaricekResult" nillable="true" type="q6:ArrayOfCevap" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="kulSoruSayisi">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="uyeID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="kulSoruSayisiResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kulSoruSayisiResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="kulCevapSayisi">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="uyeID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="kulCevapSayisiResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kulCevapSayisiResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="kulFavSoruSayisi">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="uyeID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="kulFavSoruSayisiResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kulFavSoruSayisiResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="kulFavCevapSayisi">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="uyeID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="kulFavCevapSayisiResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="kulFavCevapSayisiResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="profilGuncelle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/SoruCevapServisi" minOccurs="0" name="uye" nillable="true" type="q7:Uye" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="profilGuncelleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="profilGuncelleResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tumuyelericek">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tumuyelericekResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/SoruCevapServisi" minOccurs="0" name="tumuyelericekResult" nillable="true" type="q8:ArrayOfUye" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

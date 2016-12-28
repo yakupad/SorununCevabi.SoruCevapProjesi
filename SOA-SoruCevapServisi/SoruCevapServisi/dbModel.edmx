@@ -1,0 +1,548 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dbsorununcevabiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cevaplar">
+          <Key>
+            <PropertyRef Name="cevapID" />
+          </Key>
+          <Property Name="cevapID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cevapBasligi" Type="nvarchar" MaxLength="250" />
+          <Property Name="cevapIcerigi" Type="text" />
+          <Property Name="cevapSahibi" Type="int" />
+          <Property Name="soruNo" Type="int" Nullable="false" />
+          <Property Name="cevapTarihi" Type="datetime" />
+          <Property Name="yorumID" Type="int" />
+          <Property Name="faydali" Type="int" />
+        </EntityType>
+        <EntityType Name="FavoriCevap">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uyeID" Type="int" />
+          <Property Name="cevapID" Type="int" />
+        </EntityType>
+        <EntityType Name="FavoriSoru">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uyeID" Type="int" Nullable="false" />
+          <Property Name="soruID" Type="int" />
+        </EntityType>
+        <EntityType Name="Sorular">
+          <Key>
+            <PropertyRef Name="soruID" />
+          </Key>
+          <Property Name="soruID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="soruBasligi" Type="nvarchar" MaxLength="250" />
+          <Property Name="soruIcerigi" Type="text" />
+          <Property Name="soruSahibi" Type="int" />
+          <Property Name="soruTarihi" Type="datetime" />
+          <Property Name="favori" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Uyeler">
+          <Key>
+            <PropertyRef Name="uyeID" />
+          </Key>
+          <Property Name="uyeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kuladi" Type="nvarchar" MaxLength="50" />
+          <Property Name="adi" Type="nvarchar" MaxLength="50" />
+          <Property Name="soyadi" Type="nvarchar" MaxLength="50" />
+          <Property Name="sifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="eposta" Type="nvarchar" MaxLength="50" />
+          <Property Name="kayittarihi" Type="datetime" />
+          <Property Name="kullaniciresmi" Type="nvarchar" MaxLength="250" />
+          <Property Name="Meslek" Type="nchar" MaxLength="50" />
+          <Property Name="Egitim" Type="nvarchar" MaxLength="250" />
+          <Property Name="Konum" Type="nvarchar" MaxLength="150" />
+          <Property Name="Notu" Type="text" />
+          <Property Name="Yetenekler" Type="text" />
+        </EntityType>
+        <Association Name="FK_Cevaplar_Cevaplar">
+          <End Role="Cevaplar" Type="Self.Cevaplar" Multiplicity="0..1" />
+          <End Role="Cevaplar1" Type="Self.Cevaplar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cevaplar">
+              <PropertyRef Name="cevapID" />
+            </Principal>
+            <Dependent Role="Cevaplar1">
+              <PropertyRef Name="yorumID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cevaplar_Sorular">
+          <End Role="Sorular" Type="Self.Sorular" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Cevaplar" Type="Self.Cevaplar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sorular">
+              <PropertyRef Name="soruID" />
+            </Principal>
+            <Dependent Role="Cevaplar">
+              <PropertyRef Name="soruNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cevaplar_Uyeler">
+          <End Role="Uyeler" Type="Self.Uyeler" Multiplicity="0..1" />
+          <End Role="Cevaplar" Type="Self.Cevaplar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uyeler">
+              <PropertyRef Name="uyeID" />
+            </Principal>
+            <Dependent Role="Cevaplar">
+              <PropertyRef Name="cevapSahibi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavoriCevap_Cevaplar">
+          <End Role="Cevaplar" Type="Self.Cevaplar" Multiplicity="0..1" />
+          <End Role="FavoriCevap" Type="Self.FavoriCevap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cevaplar">
+              <PropertyRef Name="cevapID" />
+            </Principal>
+            <Dependent Role="FavoriCevap">
+              <PropertyRef Name="cevapID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavoriCevap_Uyeler">
+          <End Role="Uyeler" Type="Self.Uyeler" Multiplicity="0..1" />
+          <End Role="FavoriCevap" Type="Self.FavoriCevap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uyeler">
+              <PropertyRef Name="uyeID" />
+            </Principal>
+            <Dependent Role="FavoriCevap">
+              <PropertyRef Name="uyeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavoriSoru_Sorular">
+          <End Role="Sorular" Type="Self.Sorular" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FavoriSoru" Type="Self.FavoriSoru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sorular">
+              <PropertyRef Name="soruID" />
+            </Principal>
+            <Dependent Role="FavoriSoru">
+              <PropertyRef Name="soruID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavoriSoru_Uyeler">
+          <End Role="Uyeler" Type="Self.Uyeler" Multiplicity="1" />
+          <End Role="FavoriSoru" Type="Self.FavoriSoru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uyeler">
+              <PropertyRef Name="uyeID" />
+            </Principal>
+            <Dependent Role="FavoriSoru">
+              <PropertyRef Name="uyeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sorular_Uyeler">
+          <End Role="Uyeler" Type="Self.Uyeler" Multiplicity="0..1" />
+          <End Role="Sorular" Type="Self.Sorular" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uyeler">
+              <PropertyRef Name="uyeID" />
+            </Principal>
+            <Dependent Role="Sorular">
+              <PropertyRef Name="soruSahibi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbsorununcevabiModelStoreContainer">
+          <EntitySet Name="Cevaplar" EntityType="Self.Cevaplar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FavoriCevap" EntityType="Self.FavoriCevap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FavoriSoru" EntityType="Self.FavoriSoru" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sorular" EntityType="Self.Sorular" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uyeler" EntityType="Self.Uyeler" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Cevaplar_Cevaplar" Association="Self.FK_Cevaplar_Cevaplar">
+            <End Role="Cevaplar" EntitySet="Cevaplar" />
+            <End Role="Cevaplar1" EntitySet="Cevaplar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cevaplar_Sorular" Association="Self.FK_Cevaplar_Sorular">
+            <End Role="Sorular" EntitySet="Sorular" />
+            <End Role="Cevaplar" EntitySet="Cevaplar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cevaplar_Uyeler" Association="Self.FK_Cevaplar_Uyeler">
+            <End Role="Uyeler" EntitySet="Uyeler" />
+            <End Role="Cevaplar" EntitySet="Cevaplar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoriCevap_Cevaplar" Association="Self.FK_FavoriCevap_Cevaplar">
+            <End Role="Cevaplar" EntitySet="Cevaplar" />
+            <End Role="FavoriCevap" EntitySet="FavoriCevap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoriCevap_Uyeler" Association="Self.FK_FavoriCevap_Uyeler">
+            <End Role="Uyeler" EntitySet="Uyeler" />
+            <End Role="FavoriCevap" EntitySet="FavoriCevap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoriSoru_Sorular" Association="Self.FK_FavoriSoru_Sorular">
+            <End Role="Sorular" EntitySet="Sorular" />
+            <End Role="FavoriSoru" EntitySet="FavoriSoru" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoriSoru_Uyeler" Association="Self.FK_FavoriSoru_Uyeler">
+            <End Role="Uyeler" EntitySet="Uyeler" />
+            <End Role="FavoriSoru" EntitySet="FavoriSoru" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sorular_Uyeler" Association="Self.FK_Sorular_Uyeler">
+            <End Role="Uyeler" EntitySet="Uyeler" />
+            <End Role="Sorular" EntitySet="Sorular" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbsorununcevabiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cevaplar">
+          <Key>
+            <PropertyRef Name="cevapID" />
+          </Key>
+          <Property Name="cevapID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cevapBasligi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="cevapIcerigi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="cevapSahibi" Type="Int32" />
+          <Property Name="soruNo" Type="Int32" Nullable="false" />
+          <Property Name="cevapTarihi" Type="DateTime" Precision="3" />
+          <Property Name="yorumID" Type="Int32" />
+          <Property Name="faydali" Type="Int32" />
+          <NavigationProperty Name="Cevaplar1" Relationship="Self.FK_Cevaplar_Cevaplar" FromRole="Cevaplar" ToRole="Cevaplar1" />
+          <NavigationProperty Name="Cevaplar2" Relationship="Self.FK_Cevaplar_Cevaplar" FromRole="Cevaplar1" ToRole="Cevaplar" />
+          <NavigationProperty Name="Sorular" Relationship="Self.FK_Cevaplar_Sorular" FromRole="Cevaplar" ToRole="Sorular" />
+          <NavigationProperty Name="Uyeler" Relationship="Self.FK_Cevaplar_Uyeler" FromRole="Cevaplar" ToRole="Uyeler" />
+          <NavigationProperty Name="FavoriCevap" Relationship="Self.FK_FavoriCevap_Cevaplar" FromRole="Cevaplar" ToRole="FavoriCevap" />
+        </EntityType>
+        <EntityType Name="FavoriCevap">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uyeID" Type="Int32" />
+          <Property Name="cevapID" Type="Int32" />
+          <NavigationProperty Name="Cevaplar" Relationship="Self.FK_FavoriCevap_Cevaplar" FromRole="FavoriCevap" ToRole="Cevaplar" />
+          <NavigationProperty Name="Uyeler" Relationship="Self.FK_FavoriCevap_Uyeler" FromRole="FavoriCevap" ToRole="Uyeler" />
+        </EntityType>
+        <EntityType Name="FavoriSoru">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uyeID" Type="Int32" Nullable="false" />
+          <Property Name="soruID" Type="Int32" />
+          <NavigationProperty Name="Sorular" Relationship="Self.FK_FavoriSoru_Sorular" FromRole="FavoriSoru" ToRole="Sorular" />
+          <NavigationProperty Name="Uyeler" Relationship="Self.FK_FavoriSoru_Uyeler" FromRole="FavoriSoru" ToRole="Uyeler" />
+        </EntityType>
+        <EntityType Name="Sorular">
+          <Key>
+            <PropertyRef Name="soruID" />
+          </Key>
+          <Property Name="soruID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="soruBasligi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="soruIcerigi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="soruSahibi" Type="Int32" />
+          <Property Name="soruTarihi" Type="DateTime" Precision="3" />
+          <Property Name="favori" Type="Int32" />
+          <NavigationProperty Name="Cevaplar" Relationship="Self.FK_Cevaplar_Sorular" FromRole="Sorular" ToRole="Cevaplar" />
+          <NavigationProperty Name="FavoriSoru" Relationship="Self.FK_FavoriSoru_Sorular" FromRole="Sorular" ToRole="FavoriSoru" />
+          <NavigationProperty Name="Uyeler" Relationship="Self.FK_Sorular_Uyeler" FromRole="Sorular" ToRole="Uyeler" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Uyeler">
+          <Key>
+            <PropertyRef Name="uyeID" />
+          </Key>
+          <Property Name="uyeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kuladi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="soyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="eposta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="kayittarihi" Type="DateTime" Precision="3" />
+          <Property Name="kullaniciresmi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Meslek" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Egitim" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Konum" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Notu" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Yetenekler" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cevaplar" Relationship="Self.FK_Cevaplar_Uyeler" FromRole="Uyeler" ToRole="Cevaplar" />
+          <NavigationProperty Name="FavoriCevap" Relationship="Self.FK_FavoriCevap_Uyeler" FromRole="Uyeler" ToRole="FavoriCevap" />
+          <NavigationProperty Name="FavoriSoru" Relationship="Self.FK_FavoriSoru_Uyeler" FromRole="Uyeler" ToRole="FavoriSoru" />
+          <NavigationProperty Name="Sorular" Relationship="Self.FK_Sorular_Uyeler" FromRole="Uyeler" ToRole="Sorular" />
+        </EntityType>
+        <Association Name="FK_Cevaplar_Cevaplar">
+          <End Role="Cevaplar" Type="Self.Cevaplar" Multiplicity="0..1" />
+          <End Role="Cevaplar1" Type="Self.Cevaplar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cevaplar">
+              <PropertyRef Name="cevapID" />
+            </Principal>
+            <Dependent Role="Cevaplar1">
+              <PropertyRef Name="yorumID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cevaplar_Sorular">
+          <End Role="Sorular" Type="Self.Sorular" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Cevaplar" Type="Self.Cevaplar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sorular">
+              <PropertyRef Name="soruID" />
+            </Principal>
+            <Dependent Role="Cevaplar">
+              <PropertyRef Name="soruNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cevaplar_Uyeler">
+          <End Role="Uyeler" Type="Self.Uyeler" Multiplicity="0..1" />
+          <End Role="Cevaplar" Type="Self.Cevaplar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uyeler">
+              <PropertyRef Name="uyeID" />
+            </Principal>
+            <Dependent Role="Cevaplar">
+              <PropertyRef Name="cevapSahibi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavoriCevap_Cevaplar">
+          <End Role="Cevaplar" Type="Self.Cevaplar" Multiplicity="0..1" />
+          <End Role="FavoriCevap" Type="Self.FavoriCevap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cevaplar">
+              <PropertyRef Name="cevapID" />
+            </Principal>
+            <Dependent Role="FavoriCevap">
+              <PropertyRef Name="cevapID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavoriCevap_Uyeler">
+          <End Role="Uyeler" Type="Self.Uyeler" Multiplicity="0..1" />
+          <End Role="FavoriCevap" Type="Self.FavoriCevap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uyeler">
+              <PropertyRef Name="uyeID" />
+            </Principal>
+            <Dependent Role="FavoriCevap">
+              <PropertyRef Name="uyeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavoriSoru_Sorular">
+          <End Role="Sorular" Type="Self.Sorular" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FavoriSoru" Type="Self.FavoriSoru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sorular">
+              <PropertyRef Name="soruID" />
+            </Principal>
+            <Dependent Role="FavoriSoru">
+              <PropertyRef Name="soruID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavoriSoru_Uyeler">
+          <End Role="Uyeler" Type="Self.Uyeler" Multiplicity="1" />
+          <End Role="FavoriSoru" Type="Self.FavoriSoru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uyeler">
+              <PropertyRef Name="uyeID" />
+            </Principal>
+            <Dependent Role="FavoriSoru">
+              <PropertyRef Name="uyeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sorular_Uyeler">
+          <End Role="Uyeler" Type="Self.Uyeler" Multiplicity="0..1" />
+          <End Role="Sorular" Type="Self.Sorular" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uyeler">
+              <PropertyRef Name="uyeID" />
+            </Principal>
+            <Dependent Role="Sorular">
+              <PropertyRef Name="soruSahibi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="sorununcevabiEntitiesDB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cevaplar" EntityType="Self.Cevaplar" />
+          <EntitySet Name="FavoriCevap" EntityType="Self.FavoriCevap" />
+          <EntitySet Name="FavoriSoru" EntityType="Self.FavoriSoru" />
+          <EntitySet Name="Sorular" EntityType="Self.Sorular" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Uyeler" EntityType="Self.Uyeler" />
+          <AssociationSet Name="FK_Cevaplar_Cevaplar" Association="Self.FK_Cevaplar_Cevaplar">
+            <End Role="Cevaplar" EntitySet="Cevaplar" />
+            <End Role="Cevaplar1" EntitySet="Cevaplar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cevaplar_Sorular" Association="Self.FK_Cevaplar_Sorular">
+            <End Role="Sorular" EntitySet="Sorular" />
+            <End Role="Cevaplar" EntitySet="Cevaplar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cevaplar_Uyeler" Association="Self.FK_Cevaplar_Uyeler">
+            <End Role="Uyeler" EntitySet="Uyeler" />
+            <End Role="Cevaplar" EntitySet="Cevaplar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoriCevap_Cevaplar" Association="Self.FK_FavoriCevap_Cevaplar">
+            <End Role="Cevaplar" EntitySet="Cevaplar" />
+            <End Role="FavoriCevap" EntitySet="FavoriCevap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoriCevap_Uyeler" Association="Self.FK_FavoriCevap_Uyeler">
+            <End Role="Uyeler" EntitySet="Uyeler" />
+            <End Role="FavoriCevap" EntitySet="FavoriCevap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoriSoru_Sorular" Association="Self.FK_FavoriSoru_Sorular">
+            <End Role="Sorular" EntitySet="Sorular" />
+            <End Role="FavoriSoru" EntitySet="FavoriSoru" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoriSoru_Uyeler" Association="Self.FK_FavoriSoru_Uyeler">
+            <End Role="Uyeler" EntitySet="Uyeler" />
+            <End Role="FavoriSoru" EntitySet="FavoriSoru" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sorular_Uyeler" Association="Self.FK_Sorular_Uyeler">
+            <End Role="Uyeler" EntitySet="Uyeler" />
+            <End Role="Sorular" EntitySet="Sorular" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbsorununcevabiModelStoreContainer" CdmEntityContainer="sorununcevabiEntitiesDB">
+          <EntitySetMapping Name="Cevaplar">
+            <EntityTypeMapping TypeName="dbsorununcevabiModel.Cevaplar">
+              <MappingFragment StoreEntitySet="Cevaplar">
+                <ScalarProperty Name="cevapID" ColumnName="cevapID" />
+                <ScalarProperty Name="cevapBasligi" ColumnName="cevapBasligi" />
+                <ScalarProperty Name="cevapIcerigi" ColumnName="cevapIcerigi" />
+                <ScalarProperty Name="cevapSahibi" ColumnName="cevapSahibi" />
+                <ScalarProperty Name="soruNo" ColumnName="soruNo" />
+                <ScalarProperty Name="cevapTarihi" ColumnName="cevapTarihi" />
+                <ScalarProperty Name="yorumID" ColumnName="yorumID" />
+                <ScalarProperty Name="faydali" ColumnName="faydali" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FavoriCevap">
+            <EntityTypeMapping TypeName="dbsorununcevabiModel.FavoriCevap">
+              <MappingFragment StoreEntitySet="FavoriCevap">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="uyeID" ColumnName="uyeID" />
+                <ScalarProperty Name="cevapID" ColumnName="cevapID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FavoriSoru">
+            <EntityTypeMapping TypeName="dbsorununcevabiModel.FavoriSoru">
+              <MappingFragment StoreEntitySet="FavoriSoru">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="uyeID" ColumnName="uyeID" />
+                <ScalarProperty Name="soruID" ColumnName="soruID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sorular">
+            <EntityTypeMapping TypeName="dbsorununcevabiModel.Sorular">
+              <MappingFragment StoreEntitySet="Sorular">
+                <ScalarProperty Name="soruID" ColumnName="soruID" />
+                <ScalarProperty Name="soruBasligi" ColumnName="soruBasligi" />
+                <ScalarProperty Name="soruIcerigi" ColumnName="soruIcerigi" />
+                <ScalarProperty Name="soruSahibi" ColumnName="soruSahibi" />
+                <ScalarProperty Name="soruTarihi" ColumnName="soruTarihi" />
+                <ScalarProperty Name="favori" ColumnName="favori" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="dbsorununcevabiModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uyeler">
+            <EntityTypeMapping TypeName="dbsorununcevabiModel.Uyeler">
+              <MappingFragment StoreEntitySet="Uyeler">
+                <ScalarProperty Name="uyeID" ColumnName="uyeID" />
+                <ScalarProperty Name="kuladi" ColumnName="kuladi" />
+                <ScalarProperty Name="adi" ColumnName="adi" />
+                <ScalarProperty Name="soyadi" ColumnName="soyadi" />
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+                <ScalarProperty Name="eposta" ColumnName="eposta" />
+                <ScalarProperty Name="kayittarihi" ColumnName="kayittarihi" />
+                <ScalarProperty Name="kullaniciresmi" ColumnName="kullaniciresmi" />
+                <ScalarProperty Name="Meslek" ColumnName="Meslek" />
+                <ScalarProperty Name="Egitim" ColumnName="Egitim" />
+                <ScalarProperty Name="Konum" ColumnName="Konum" />
+                <ScalarProperty Name="Notu" ColumnName="Notu" />
+                <ScalarProperty Name="Yetenekler" ColumnName="Yetenekler" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

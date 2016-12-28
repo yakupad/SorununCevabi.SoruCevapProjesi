@@ -1,0 +1,33 @@
+﻿
+
+<link href="~/Content/favoriler.css" rel="stylesheet" />
+<div class="container" style="padding-top:30px">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="box box-primary" style="margin-top:-30px">
+
+                <div class="box-header"><h3 class="box-title">Favori Cevaplar</h3></div>
+                @foreach (SorununCevabi.ServiceReference.Cevap tfc in ViewBag.tumfavoricevaplar)
+                {
+
+                    <div id="tb-testimonial" class="testimonial testimonial-danger-filled" style="margin-left:20px; margin-right:20px; margin-top:10px;">
+                        <div class="testimonial-section">
+                            @Html.Raw(HttpUtility.UrlDecode(tfc.Icerik))
+                        </div>
+                        <div class="testimonial-desc">
+                            <img src="@tfc.cevapciresmi" id="dondur" alt="@tfc.cevapSahibi" />
+                            <div class="testimonial-writer">
+                                <div class="testimonial-writer-name">@tfc.cevapSahibi</div>
+                                <div class="testimonial-writer-designation">@tfc.cevapSahibi</div>
+                                <a href="#" class="testimonial-writer-company">@tfc.cevapTarihi</a>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+                <br />
+            </div>
+
+        </div>
+    </div>
+</div>

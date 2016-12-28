@@ -1,0 +1,54 @@
+D:\SoruCevapServisi\SoruCevapServisi\bin\SoruCevapServisi.dll.config
+D:\SoruCevapServisi\SoruCevapServisi\bin\SoruCevapServisi.dll
+D:\SoruCevapServisi\SoruCevapServisi\bin\SoruCevapServisi.pdb
+D:\SoruCevapServisi\SoruCevapServisi\bin\EntityFramework.dll
+D:\SoruCevapServisi\SoruCevapServisi\bin\EntityFramework.SqlServer.dll
+D:\SoruCevapServisi\SoruCevapServisi\bin\Newtonsoft.Json.dll
+D:\SoruCevapServisi\SoruCevapServisi\bin\System.Net.Http.Formatting.dll
+D:\SoruCevapServisi\SoruCevapServisi\bin\System.Web.Http.dll
+D:\SoruCevapServisi\SoruCevapServisi\bin\System.Web.Http.WebHost.dll
+D:\SoruCevapServisi\SoruCevapServisi\bin\EntityFramework.xml
+D:\SoruCevapServisi\SoruCevapServisi\bin\EntityFramework.SqlServer.xml
+D:\SoruCevapServisi\SoruCevapServisi\bin\Newtonsoft.Json.xml
+D:\SoruCevapServisi\SoruCevapServisi\bin\System.Net.Http.Formatting.xml
+D:\SoruCevapServisi\SoruCevapServisi\bin\System.Web.Http.xml
+D:\SoruCevapServisi\SoruCevapServisi\bin\System.Web.Http.WebHost.xml
+D:\SoruCevapServisi\SoruCevapServisi\obj\Release\SoruCevapServisi.csprojResolveAssemblyReference.cache
+D:\SoruCevapServisi\SoruCevapServisi\obj\Release\SoruCevapServisi.dll
+D:\SoruCevapServisi\SoruCevapServisi\obj\Release\SoruCevapServisi.pdb
+C:\Users\yakup\Desktop\Yeni klasör (4)\SoruCevapServisi\SoruCevapServisi\bin\SoruCevapServisi.dll.config
+C:\Users\yakup\Desktop\Yeni klasör (4)\SoruCevapServisi\SoruCevapServisi\bin\SoruCevapServisi.dll
+C:\Users\yakup\Desktop\Yeni klasör (4)\SoruCevapServisi\SoruCevapServisi\bin\SoruCevapServisi.pdb
+C:\Users\yakup\Desktop\Yeni klasör (4)\SoruCevapServisi\SoruCevapServisi\bin\EntityFramework.dll
+C:\Users\yakup\Desktop\Yeni klasör (4)\SoruCevapServisi\SoruCevapServisi\bin\EntityFramework.SqlServer.dll
+C:\Users\yakup\Desktop\Yeni klasör (4)\SoruCevapServisi\SoruCevapServisi\bin\Newtonsoft.Json.dll
+C:\Users\yakup\Desktop\Yeni klasör (4)\SoruCevapServisi\SoruCevapServisi\bin\System.Net.Http.Formatting.dll
+C:\Users\yakup\Desktop\Yeni klasör (4)\SoruCevapServisi\SoruCevapServisi\bin\System.Web.Http.dll
+C:\Users\yakup\Desktop\Yeni klasör (4)\SoruCevapServisi\SoruCevapServisi\bin\System.Web.Http.WebHost.dll
+C:\Users\yakup\Desktop\Yeni klasör (4)\SoruCevapServisi\SoruCevapServisi\bin\EntityFramework.xml
+C:\Users\yakup\Desktop\Yeni klasör (4)\SoruCevapServisi\SoruCevapServisi\bin\EntityFramework.SqlServer.xml
+C:\Users\yakup\Desktop\Yeni klasör (4)\SoruCevapServisi\SoruCevapServisi\bin\Newtonsoft.Json.xml
+C:\Users\yakup\Desktop\Yeni klasör (4)\SoruCevapServisi\SoruCevapServisi\bin\System.Net.Http.Formatting.xml
+C:\Users\yakup\Desktop\Yeni klasör (4)\SoruCevapServisi\SoruCevapServisi\bin\System.Web.Http.xml
+C:\Users\yakup\Desktop\Yeni klasör (4)\SoruCevapServisi\SoruCevapServisi\bin\System.Web.Http.WebHost.xml
+C:\Users\yakup\Desktop\Yeni klasör (4)\SoruCevapServisi\SoruCevapServisi\obj\Release\SoruCevapServisi.csprojResolveAssemblyReference.cache
+C:\Users\yakup\Desktop\Yeni klasör (4)\SoruCevapServisi\SoruCevapServisi\obj\Release\SoruCevapServisi.dll
+C:\Users\yakup\Desktop\Yeni klasör (4)\SoruCevapServisi\SoruCevapServisi\obj\Release\SoruCevapServisi.pdb
+C:\Users\yakup\Desktop\Yeni klasör (4) - Kopya\SoruCevapServisi\SoruCevapServisi\bin\SoruCevapServisi.dll.config
+C:\Users\yakup\Desktop\Yeni klasör (4) - Kopya\SoruCevapServisi\SoruCevapServisi\bin\SoruCevapServisi.dll
+C:\Users\yakup\Desktop\Yeni klasör (4) - Kopya\SoruCevapServisi\SoruCevapServisi\bin\SoruCevapServisi.pdb
+C:\Users\yakup\Desktop\Yeni klasör (4) - Kopya\SoruCevapServisi\SoruCevapServisi\bin\EntityFramework.dll
+C:\Users\yakup\Desktop\Yeni klasör (4) - Kopya\SoruCevapServisi\SoruCevapServisi\bin\EntityFramework.SqlServer.dll
+C:\Users\yakup\Desktop\Yeni klasör (4) - Kopya\SoruCevapServisi\SoruCevapServisi\bin\Newtonsoft.Json.dll
+C:\Users\yakup\Desktop\Yeni klasör (4) - Kopya\SoruCevapServisi\SoruCevapServisi\bin\System.Net.Http.Formatting.dll
+C:\Users\yakup\Desktop\Yeni klasör (4) - Kopya\SoruCevapServisi\SoruCevapServisi\bin\System.Web.Http.dll
+C:\Users\yakup\Desktop\Yeni klasör (4) - Kopya\SoruCevapServisi\SoruCevapServisi\bin\System.Web.Http.WebHost.dll
+C:\Users\yakup\Desktop\Yeni klasör (4) - Kopya\SoruCevapServisi\SoruCevapServisi\bin\EntityFramework.xml
+C:\Users\yakup\Desktop\Yeni klasör (4) - Kopya\SoruCevapServisi\SoruCevapServisi\bin\EntityFramework.SqlServer.xml
+C:\Users\yakup\Desktop\Yeni klasör (4) - Kopya\SoruCevapServisi\SoruCevapServisi\bin\Newtonsoft.Json.xml
+C:\Users\yakup\Desktop\Yeni klasör (4) - Kopya\SoruCevapServisi\SoruCevapServisi\bin\System.Net.Http.Formatting.xml
+C:\Users\yakup\Desktop\Yeni klasör (4) - Kopya\SoruCevapServisi\SoruCevapServisi\bin\System.Web.Http.xml
+C:\Users\yakup\Desktop\Yeni klasör (4) - Kopya\SoruCevapServisi\SoruCevapServisi\bin\System.Web.Http.WebHost.xml
+C:\Users\yakup\Desktop\Yeni klasör (4) - Kopya\SoruCevapServisi\SoruCevapServisi\obj\Release\SoruCevapServisi.csprojResolveAssemblyReference.cache
+C:\Users\yakup\Desktop\Yeni klasör (4) - Kopya\SoruCevapServisi\SoruCevapServisi\obj\Release\SoruCevapServisi.dll
+C:\Users\yakup\Desktop\Yeni klasör (4) - Kopya\SoruCevapServisi\SoruCevapServisi\obj\Release\SoruCevapServisi.pdb

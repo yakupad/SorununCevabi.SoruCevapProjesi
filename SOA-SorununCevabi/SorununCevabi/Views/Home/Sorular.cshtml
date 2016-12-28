@@ -1,0 +1,361 @@
+﻿
+@{
+    ViewBag.Title = "Sorular";
+}
+<link href="~/Content/fullcalendar.print.css" media="print" rel="stylesheet" />
+
+
+<div id="uyari"></div>
+
+
+
+<!-- Main content -->
+
+
+<section class="content" style="margin-top:-15px;">
+    <div class="row">
+        <!-- /.col -->
+        <div class="col-md-9">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">Daha Önce Sorulmuş Sorular</h3>
+                    <div class="box-tools pull-right">
+
+                        <div class="has-feedback">
+                            <input type="text" class="form-control search input-sm" id="search" placeholder="Soru Ara">
+                            <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                        </div>
+                    </div>
+                    <!-- /.box-tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <div class="mailbox-controls">
+                        <!-- Check all button -->
+                       
+
+                        <div class="btn-group">
+                            @foreach (SorununCevabi.ServiceReference.Soru kullaniciresimleri in ViewBag.tumsorular)
+                            {
+                                <a href="../Home/SoruOku/@kullaniciresimleri.soruID"> <img id="dondur" src="@kullaniciresimleri.soruSahibiResim" height="30px" width="30px" class="img-circle" alt="@kullaniciresimleri.soruSahibi" /></a>
+                            }
+                        </div>
+
+
+                        <div class="pull-right">
+                            <style>
+                                .pager {
+                                    padding-left: 0;
+                                    margin: 0px 0;
+                                    text-align: center;
+                                    list-style: none;
+                                }
+                            </style>
+
+                            <ul class="pagination pagination-sm pager" id="myPager"></ul>
+                            @*<button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left pager"></i></button>
+                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right pager"></i></button>*@
+
+                            <!-- /.btn-group -->
+                        </div>
+                        <!-- /.pull-right -->
+                    </div>
+
+
+
+
+                    <style>
+                        .stil {
+                            word-wrap: break-word;
+                        }
+                    </style>
+
+
+
+
+
+
+
+
+
+                    <div class="table-responsive mailbox-messages">
+                        <table class="table table-hover table-striped paginated results">
+                            <thead>
+                                <tr>
+                                    <th>Fav.</th>
+                                    <th>Kullanıcı Adı</th>
+                                    <th>Soru Başlığı</th>
+                                    <th>Soru Tarihi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="myTable">
+
+                                @foreach (SorununCevabi.ServiceReference.Soru item in ViewBag.tumsorular)
+                                {
+
+                                    <tr>
+                                        @*<td><input type="checkbox"></td>*@
+                                        @{
+                                            string sinif = "";
+                                            if (item.favori == true)
+                                            {
+                                                sinif = "fa fa-star text-yellow";
+                                            }
+                                            else
+                                            {
+                                                sinif = "fa fa-star-o text-yellow";
+                                            }
+                                        }
+                                        <td><button soruId="@item.soruID" class="@sinif favEkle"></button></td>
+                                        <td>
+                                            <img src="@item.soruSahibiResim" height="25px" width="25px" class="img-circle" id="dondur" alt="@item.soruSahibi" />
+                                            <b><strong>  @item.soruSahibi</strong></b>
+                                        </td>
+                                        <td style="word-wrap:break-word">
+                                            <b><a href="../Home/SoruOku/@item.soruID" class="stil">@item.soruBasligi</a></b>
+
+                                        </td>
+
+                                        @*<td>@Html.Raw(HttpUtility.UrlDecode(item.soruIcerigi))</td>*@
+
+                                        <td class="mailbox-date">@item.soruTarihi</td>
+
+
+
+                                        @*<td style="float:right;display:none" id="butonlar">
+                                                <button type="button" class="btn btn-info btn-sm" onclick="FunctionGuncelle(@item.soruID);" baslik="@item.soruBasligi" icerik="@item.soruIcerigi" sahip="@item.soruSahibiID" id="@item.soruID">Güncelle</button>
+                                                <button type="button" class="btn btn-danger btn-sm" onclick="FunctionSil(@item.soruID);" id="sil">Sil</button>
+                                            </td>*@
+
+                                    </tr>
+                                            }
+                            </tbody>
+                        </table>
+
+                        <!-- /.table -->
+                    </div>
+
+                    <!-- /.mail-box-messages -->
+                </div>
+                <!-- /.box-body -->
+
+            </div>
+            <!-- /. box -->
+        </div>
+    </div>
+</section>
+
+<!-- /.col -->
+<!-- /.row -->
+<!-- /.content -->
+
+
+
+
+<script>
+    $(function(){
+        $(".favEkle").click(function(){
+            var secili = $(this);
+            var soruId = $(this).attr("soruId");
+
+            $.post("../Home/SoruFavGuncelle",{soruID:soruId},function(data){
+                console.log(data);
+                if(data.basari == true){
+                    secili.removeClass("fa-star-o text-yellow");
+                    secili.addClass("fa-star text-yellow");
+
+                }else{
+                    secili.removeClass("fa-star text-yellow");
+                    secili.addClass("fa-star-o text-yellow");
+                }
+            });
+        });
+
+    });
+</script>
+
+
+<script>
+
+    function FunctionSil(x){
+        var soruID = x;
+        var sorusahibi = $("#" + x).attr("sahip");
+        var oturumsahibi=@Session["id"];
+        if(sorusahibi==oturumsahibi) {
+            $.post("../Home/SoruSil", {soruID:soruID }, function (data) {
+                if (data.basari == true) {
+                    $("#uyari").html('<div class="alert alert-success alert-dismissible" id="kosul"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-danger"></i> Başarılı!</h4>Seçilen soruyu başarıyla sildiniz</div>');
+                    setTimeout("location.href = '../Home/Sorular';", 2500);
+
+                }
+                else {
+                    alert("Bir hata oluştu");
+                }
+            });
+        }
+        else{
+            $('html,body').scrollTop(0);
+            $("#uyari").html('<div class="alert alert-danger alert-dismissible" id="kosul"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-danger"></i> Hata!</h4>Soruyu soran kişiler yalnızca silme işleminde bulunabilirler!</div>');
+
+        }
+    }
+
+</script>
+<script>
+
+    function FunctionGuncelle(x) {
+        var sorusahibi = $("#" + x).attr("sahip");
+        var soruID = x;
+        var sorubaslik = $("#" + x).attr("baslik");
+        var soruicerik = $("#" + x).attr("icerik");
+        var oturumsahibi=@Session["id"];
+        if(sorusahibi==oturumsahibi) {
+
+
+
+
+        $.post("../Home/SoruGuncelleme", {soruID:soruID,sorubaslik:sorubaslik,soruicerik:soruicerik }, function (data) {
+            if (data.basari == true) {
+                location.href = "../Home/SoruGuncelle";
+        }
+        else {
+                alert("Bir hata oluştu");
+        }
+        });
+        }
+        else {
+            $('html,body').scrollTop(0);
+            $("#uyari").html('<div class="alert alert-danger alert-dismissible" id="kosul"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-danger"></i> Hata!</h4>Soruyu soran kişiler yalnızca güncelleme işleminde bulunabilirler!</div>');
+
+        }
+    }
+
+
+</script>
+
+<script>
+                        $.fn.pageMe = function (opts) {
+                            var $this = this,
+                                defaults = {
+                                    perPage: 7,
+                                    showPrevNext: false,
+                                    hidePageNumbers: false
+                                },
+                                settings = $.extend(defaults, opts);
+
+                            var listElement = $this;
+                            var perPage = settings.perPage;
+                            var children = listElement.children();
+                            var pager = $('.pager');
+
+                            if (typeof settings.childSelector != "undefined") {
+                                children = listElement.find(settings.childSelector);
+                            }
+
+                            if (typeof settings.pagerSelector != "undefined") {
+                                pager = $(settings.pagerSelector);
+                            }
+
+                            var numItems = children.size();
+                            var numPages = Math.ceil(numItems / perPage);
+
+                            pager.data("curr", 0);
+
+                            if (settings.showPrevNext) {
+                                $('<li><a href="#" class="prev_link">«</a></li>').appendTo(pager);
+                            }
+
+                            var curr = 0;
+                            while (numPages > curr && (settings.hidePageNumbers == false)) {
+                                $('<li><a href="#" class="page_link">' + (curr + 1) + '</a></li>').appendTo(pager);
+                                curr++;
+                            }
+
+                            if (settings.showPrevNext) {
+                                $('<li><a href="#" class="next_link">»</a></li>').appendTo(pager);
+                            }
+
+                            pager.find('.page_link:first').addClass('active');
+                            pager.find('.prev_link').hide();
+                            if (numPages <= 1) {
+                                pager.find('.next_link').hide();
+                            }
+                            pager.children().eq(1).addClass("active");
+
+                            children.hide();
+                            children.slice(0, perPage).show();
+
+                            pager.find('li .page_link').click(function () {
+                                var clickedPage = $(this).html().valueOf() - 1;
+                                goTo(clickedPage, perPage);
+                                return false;
+                            });
+                            pager.find('li .prev_link').click(function () {
+                                previous();
+                                return false;
+                            });
+                            pager.find('li .next_link').click(function () {
+                                next();
+                                return false;
+                            });
+
+                            function previous() {
+                                var goToPage = parseInt(pager.data("curr")) - 1;
+                                goTo(goToPage);
+                            }
+
+                            function next() {
+                                goToPage = parseInt(pager.data("curr")) + 1;
+                                goTo(goToPage);
+                            }
+
+                            function goTo(page) {
+                                var startAt = page * perPage,
+                                    endOn = startAt + perPage;
+
+                                children.css('display', 'none').slice(startAt, endOn).show();
+
+                                if (page >= 1) {
+                                    pager.find('.prev_link').show();
+                                }
+                                else {
+                                    pager.find('.prev_link').hide();
+                                }
+
+                                if (page < (numPages - 1)) {
+                                    pager.find('.next_link').show();
+                                }
+                                else {
+                                    pager.find('.next_link').hide();
+                                }
+
+                                pager.data("curr", page);
+                                pager.children().removeClass("active");
+                                pager.children().eq(page + 1).addClass("active");
+
+                            }
+                        };
+
+                        $(document).ready(function () {
+
+                            $('#myTable').pageMe({ pagerSelector: '#myPager', showPrevNext: true, hidePageNumbers: false, perPage: 9 });
+
+                        });
+</script>
+<script>
+$("#search").keyup(function () {
+    var value = this.value.toLowerCase().trim();
+
+    $("table tr").each(function (index) {
+        if (!index) return;
+        $(this).find("td").each(function () {
+            var id = $(this).text().toLowerCase().trim();
+            var not_found = (id.indexOf(value) == -1);
+            $(this).closest('tr').toggle(!not_found);
+            return not_found;
+        });
+    });
+});
+</script>
+
+

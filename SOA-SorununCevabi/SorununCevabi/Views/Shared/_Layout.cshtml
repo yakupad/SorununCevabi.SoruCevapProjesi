@@ -1,0 +1,368 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sorunun Cevabı | AnaSayfa</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet" href="~/Content/bootstrap.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Content/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="~/Content/_all-skins.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/Content/blue.css">
+    <!-- Morris chart -->
+    <link rel="stylesheet" href="~/Content/morris.css">
+    <!-- jvectormap -->
+    <link rel="stylesheet" href="~/Content/jquery-jvectormap-1.2.2.css">
+    <!-- Date Picker -->
+    <link rel="stylesheet" href="~/Content/datepicker3.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="~/Content/daterangepicker.css">
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link rel="stylesheet" href="~/Content/bootstrap3-wysihtml5.min.css">
+    <style>
+        #dondur {
+            transition: 1s;
+        }
+
+            #dondur:hover {
+                width: 50px;
+                height: 50px;
+                transform: rotate(360deg);
+            }
+    </style>
+
+
+
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+    <!-- jQuery 2.2.3 -->
+    <script src="~/Scripts/jquery-2.2.3.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button);
+    </script>
+    <!-- Bootstrap 3.3.6 -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+
+    <!-- Morris.js charts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <!-- Sparkline -->
+    <script src="~/Scripts/jquery.sparkline.min.js"></script>
+    <!-- jvectormap -->
+    <script src="~/Scripts/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="~/Scripts/jquery-jvectormap-world-mill-en.js"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="~/Scripts/jquery.knob.js"></script>
+    <!-- daterangepicker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+    <script src="~/Scripts/daterangepicker.js"></script>
+    <!-- datepicker -->
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
+
+    <!-- Bootstrap WYSIHTML5 -->
+    <script src="~/Scripts/bootstrap3-wysihtml5.all.min.js"></script>
+    <!-- Slimscroll -->
+    <script src="~/Scripts/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="~/Scripts/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/Scripts/app.min.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    @*<script src="~/Scripts/dashboard.js"></script>*@
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/Scripts/demo.js"></script>
+
+
+
+
+
+
+
+</head>
+<body class="hold-transition skin-red sidebar-mini layout-boxed sidebar-collapse">
+    <div class="wrapper">
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="../Home/Sorular" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini">S<b>o</b>R</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Sorunun</b>CEVABI</span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top">
+                <!-- Sidebar toggle button-->
+
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+
+
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <b>@Session["adi"]&nbsp;@Session["soyadi"]</b> @DateTime.Now.ToShortDateString() @DateTime.Now.ToShortTimeString()
+                                <img src=@Session["kullaniciresmi"] class="user-image" id="dondur" alt="@Session["kullaniciadi"]">
+                                <span class="hidden-xs">             </span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src=@Session["kullaniciresmi"] class="img-circle" alt="@Session["kullaniciadi"]">
+                                    <p>
+                                        @Session["adi"]&nbsp;@Session["soyadi"] -  @Session["kullaniciadi"]<br />
+                                        @Session["meslek"]
+                                        <small>Üyelik Tarihi @Session["kayittarihi"]</small>
+                                    </p>
+                                </li>
+                                <!-- Menu Body -->
+                                <li class="user-body">
+                                    <div class="row">
+                                        <div class="col-xs-3 text-center">
+                                            <a href="#"><b>@Session["kulsorusayisi"]</b><br />Soru</a>
+                                        </div>
+                                        <div class="col-xs-3 text-center">
+                                            <a href="#"><b>@Session["kulcevapsayisi"]</b><br />Cevap</a>
+                                        </div>
+                                        <div class="col-xs-3 text-center">
+                                            <a href="#"><b>@Session["kulsorusayisi"]</b><br />F.Soru</a>
+                                        </div>
+                                        <div class="col-xs-3 text-center">
+                                            <a href="#"><b>@Session["kulfavcevapsayisi"]</b><br />F.Cevap</a>
+                                        </div>
+                                    </div>
+                                    <!-- /.row -->
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <a href="../Home/Profil" class="btn btn-default btn-flat">Profil</a>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <a href="../Login/LockScreen" class="btn btn-default btn-flat">Kilitle</a>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <a href="../Login/Login" class="btn btn-default btn-flat">Çıkış</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Control Sidebar Toggle Button -->
+
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <!-- search form -->
+                <!-- /.search form -->
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu">
+                    <li class="header">MAIN NAVIGATION</li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-chrome"></i>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-internet-explorer"></i>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-firefox"></i>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-safari"></i>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-laptop"></i>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-at"></i>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-keyboard-o"></i>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-turkish-lira"></i>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-apple"></i>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa  fa-google"></i>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa   fa-html5"></i>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa    fa-linux"></i>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa    fa-windows"></i>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa    fa-pied-piper-alt"></i>
+                        </a>
+                    </li>
+
+
+
+                </ul>
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+        <!-- Content Wrapper. Contains page content -->
+        <section class="content" style="padding-left:1px;">
+            <div class="content-wrapper" style="min-height:750px;">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Sorunun Cevabı
+                        <small>Kontrol Paneli</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-dashboard"></i>Sorunun Cevabı</a></li>
+                        <li class="active">Ana Sayfa</li>
+                    </ol>
+                </section>
+                <section class="content">
+
+                    <!-- Small boxes (Stat box) -->
+                    <div class="col-md-3">
+                        <div class="row">
+                            <!-- small box -->
+                            <div class="small-box bg-aqua">
+                                <div class="inner">
+                                    <h3>Görüntüle</h3>
+                                    <p>Tüm Soruları Görüntüleyin</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-help-circled"></i>
+                                </div>
+                                <a href="/Home/Sorular" class="small-box-footer">Git! <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="row">
+                            <!-- small box -->
+                            <div class="small-box bg-primary">
+                                <div class="inner">
+                                    <h3>Sor</h3>
+                                    <p>Sorunuzu Sorun</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-help-circled"></i>
+                                </div>
+                                <a href="/Home/SoruEkle" class="small-box-footer">Git! <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="row">
+                            <!-- small box -->
+                            <div class="small-box bg-yellow">
+                                <div class="inner">
+                                    <h3>Sorular</h3>
+                                    <p>Favori Sorularınızı Görüntüleyin</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-help-circled"></i>
+                                </div>
+                                <a href="../Home/FavoriSorular" class="small-box-footer">Git! <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="row">
+                            <!-- small box -->
+                            <div class="small-box bg-red">
+                                <div class="inner">
+                                    <h3>Cevaplar</h3>
+                                    <p>Favori cevaplarınızı görüntüleyin</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-help-circled"></i>
+                                </div>
+                                <a href="../Home/FavoriCevaplar" class="small-box-footer">Git!<i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                    </div>
+                    <!-- /.row -->
+                    @RenderBody()
+                </section>
+            </div>
+        </section>
+
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>MCBÜ</b> HFTTF
+            </div>
+            <strong>Copyright &copy; 2013-2016 <a href="http://www.yazilimmuhendisiyiz.biz">Yazılım Mühendisiyiz Biz</a>.</strong> All rights
+            reserved.
+        </footer>
+        <!-- Control Sidebar -->
+        <!-- /.control-sidebar -->
+        <!-- Add the sidebar's background. This div must be placed
+             immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
+    </div>
+    <!-- ./wrapper -->
+
+
+
+
+
+
+
+</body>
+</html>

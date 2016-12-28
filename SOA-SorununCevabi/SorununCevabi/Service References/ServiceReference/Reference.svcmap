@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="373b0fb5-a182-41fc-9e24-058e5dc672f5" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://sorununcevabi.somee.com/SorununCevabi.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SorununCevabi.wsdl" MetadataType="Wsdl" ID="41646b2a-4abb-4d2d-95b4-af2ce8788c6a" SourceId="1" SourceUrl="http://sorununcevabi.somee.com/SorununCevabi.svc?wsdl" />
+    <MetadataFile FileName="SorununCevabi.xsd" MetadataType="Schema" ID="561fdaa3-1463-48d3-91bf-5250c3c03d54" SourceId="1" SourceUrl="http://sorununcevabi.somee.com/SorununCevabi.svc?xsd=xsd2" />
+    <MetadataFile FileName="SorununCevabi1.xsd" MetadataType="Schema" ID="259f6bf2-3e57-436c-9b22-f0f80aa2fe6c" SourceId="1" SourceUrl="http://sorununcevabi.somee.com/SorununCevabi.svc?xsd=xsd1" />
+    <MetadataFile FileName="SorununCevabi2.xsd" MetadataType="Schema" ID="d2529079-84d7-46d1-b81c-281e73be4110" SourceId="1" SourceUrl="http://sorununcevabi.somee.com/SorununCevabi.svc?xsd=xsd0" />
+    <MetadataFile FileName="SorununCevabi.disco" MetadataType="Disco" ID="c7491bbf-7fcc-4ce2-99c3-ed794d9f83a1" SourceId="1" SourceUrl="http://sorununcevabi.somee.com/SorununCevabi.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

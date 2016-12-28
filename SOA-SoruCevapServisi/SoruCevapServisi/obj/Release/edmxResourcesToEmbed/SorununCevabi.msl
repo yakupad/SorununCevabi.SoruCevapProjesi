@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbSorununCevabiModelStoreContainer" CdmEntityContainer="dbSorununCevabiEntities">
+    <EntitySetMapping Name="Cevaplar">
+      <EntityTypeMapping TypeName="dbSorununCevabiModel.Cevaplar">
+        <MappingFragment StoreEntitySet="Cevaplar">
+          <ScalarProperty Name="cevapID" ColumnName="cevapID" />
+          <ScalarProperty Name="cevapBasligi" ColumnName="cevapBasligi" />
+          <ScalarProperty Name="cevapIcerigi" ColumnName="cevapIcerigi" />
+          <ScalarProperty Name="cevapSahibi" ColumnName="cevapSahibi" />
+          <ScalarProperty Name="soruNo" ColumnName="soruNo" />
+          <ScalarProperty Name="cevapTarihi" ColumnName="cevapTarihi" />
+          <ScalarProperty Name="yorumID" ColumnName="yorumID" />
+          <ScalarProperty Name="faydali" ColumnName="faydali" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FavoriCevap">
+      <EntityTypeMapping TypeName="dbSorununCevabiModel.FavoriCevap">
+        <MappingFragment StoreEntitySet="FavoriCevap">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="uyeID" ColumnName="uyeID" />
+          <ScalarProperty Name="cevapID" ColumnName="cevapID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FavoriSoru">
+      <EntityTypeMapping TypeName="dbSorununCevabiModel.FavoriSoru">
+        <MappingFragment StoreEntitySet="FavoriSoru">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="uyeID" ColumnName="uyeID" />
+          <ScalarProperty Name="soruID" ColumnName="soruID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sorular">
+      <EntityTypeMapping TypeName="dbSorununCevabiModel.Sorular">
+        <MappingFragment StoreEntitySet="Sorular">
+          <ScalarProperty Name="soruID" ColumnName="soruID" />
+          <ScalarProperty Name="soruBasligi" ColumnName="soruBasligi" />
+          <ScalarProperty Name="soruIcerigi" ColumnName="soruIcerigi" />
+          <ScalarProperty Name="soruSahibi" ColumnName="soruSahibi" />
+          <ScalarProperty Name="soruTarihi" ColumnName="soruTarihi" />
+          <ScalarProperty Name="favori" ColumnName="favori" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Uyeler">
+      <EntityTypeMapping TypeName="dbSorununCevabiModel.Uyeler">
+        <MappingFragment StoreEntitySet="Uyeler">
+          <ScalarProperty Name="uyeID" ColumnName="uyeID" />
+          <ScalarProperty Name="kuladi" ColumnName="kuladi" />
+          <ScalarProperty Name="adi" ColumnName="adi" />
+          <ScalarProperty Name="soyadi" ColumnName="soyadi" />
+          <ScalarProperty Name="sifre" ColumnName="sifre" />
+          <ScalarProperty Name="eposta" ColumnName="eposta" />
+          <ScalarProperty Name="kayittarihi" ColumnName="kayittarihi" />
+          <ScalarProperty Name="kullaniciresmi" ColumnName="kullaniciresmi" />
+          <ScalarProperty Name="Meslek" ColumnName="Meslek" />
+          <ScalarProperty Name="Egitim" ColumnName="Egitim" />
+          <ScalarProperty Name="Konum" ColumnName="Konum" />
+          <ScalarProperty Name="Notu" ColumnName="Notu" />
+          <ScalarProperty Name="Yetenekler" ColumnName="Yetenekler" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

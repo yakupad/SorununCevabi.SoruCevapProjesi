@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SoruCevapServisi" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SoruCevapServisi" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfCevap">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Cevap" nillable="true" type="tns:Cevap" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCevap" nillable="true" type="tns:ArrayOfCevap" />
+  <xs:complexType name="Cevap">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Baslik" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Icerik" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cevapID" type="xs:int" />
+      <xs:element minOccurs="0" name="cevapSahibi" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cevapSahibiID" type="xs:int" />
+      <xs:element minOccurs="0" name="cevapTarihi" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="cevapciresmi" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="favori" type="xs:boolean" />
+      <xs:element minOccurs="0" name="faydalimi" type="xs:boolean" />
+      <xs:element minOccurs="0" name="soruNo" type="xs:int" />
+      <xs:element minOccurs="0" name="yorumlar" nillable="true" type="tns:ArrayOfYorum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Cevap" nillable="true" type="tns:Cevap" />
+  <xs:complexType name="ArrayOfYorum">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Yorum" nillable="true" type="tns:Yorum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfYorum" nillable="true" type="tns:ArrayOfYorum" />
+  <xs:complexType name="Yorum">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Baslik" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Icerik" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cevapID" type="xs:int" />
+      <xs:element minOccurs="0" name="yorumSahibi" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="yorumSahibiID" type="xs:int" />
+      <xs:element minOccurs="0" name="yorumTarihi" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="yorumcuadi" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="yorumcuresmi" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="yorumcusoyadi" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Yorum" nillable="true" type="tns:Yorum" />
+  <xs:complexType name="Soru">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="favori" type="xs:boolean" />
+      <xs:element minOccurs="0" name="soruBasligi" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="soruID" type="xs:int" />
+      <xs:element minOccurs="0" name="soruIcerigi" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="soruSahibi" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="soruSahibiID" type="xs:int" />
+      <xs:element minOccurs="0" name="soruSahibiResim" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="soruTarihi" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Soru" nillable="true" type="tns:Soru" />
+  <xs:complexType name="ArrayOfSoru">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Soru" nillable="true" type="tns:Soru" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSoru" nillable="true" type="tns:ArrayOfSoru" />
+  <xs:complexType name="Uye">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="UyeID" type="xs:int" />
+      <xs:element minOccurs="0" name="adi" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="egitim" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="eposta" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="kayittarihi" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="konum" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="kuladi" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="kullaniciresmi" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="meslek" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="not" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="sifre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="soyadi" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="yetenek" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Uye" nillable="true" type="tns:Uye" />
+  <xs:complexType name="ArrayOfUye">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Uye" nillable="true" type="tns:Uye" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUye" nillable="true" type="tns:ArrayOfUye" />
+</xs:schema>
